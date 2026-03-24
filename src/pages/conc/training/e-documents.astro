@@ -1,0 +1,51 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const metadata = {
+  title: 'E-Documents',
+  description: 'หน้ารวมเอกสารประกอบหลักสูตรและไฟล์สำคัญของ CONC',
+};
+
+const documentItems = await getCollection('document-item');
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Training Service</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">E-Documents</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้ทำหน้าที่เป็น document hub สำหรับโบรชัวร์ ตารางอบรม แบบฟอร์ม
+        และเอกสารที่เกี่ยวข้องกับการเรียนหรือการสมัคร
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="overflow-hidden rounded-[1.75rem] border border-stone-200 bg-white">
+      <div
+        class="grid grid-cols-[1.6fr_0.8fr_0.8fr_0.8fr] border-b border-stone-200 bg-neutral-100 px-6 py-4 text-sm font-semibold text-stone-700"
+      >
+        <div>Document</div>
+        <div>Category</div>
+        <div>Updated</div>
+        <div>Access</div>
+      </div>
+      {
+        documentItems.map((item) => (
+          <div class="grid grid-cols-1 gap-3 border-b border-stone-200 px-6 py-5 md:grid-cols-[1.6fr_0.8fr_0.8fr_0.8fr]">
+            <div class="font-medium text-stone-900">{item.data.title}</div>
+            <div class="text-sm text-stone-700">{item.data.category}</div>
+            <div class="text-sm text-stone-700">{item.data.updatedAt}</div>
+            <div>
+              <span class="rounded-full border border-red-700 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-red-700">
+                {item.data.access}
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

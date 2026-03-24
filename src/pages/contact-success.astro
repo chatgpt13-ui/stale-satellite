@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Message Received',
+  description: 'ยืนยันการส่งแบบฟอร์มสำเร็จ',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-4xl px-4 py-24 md:px-6">
+    <div class="rounded-[2rem] border border-stone-200 bg-white p-10 text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Submission complete</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">ได้รับข้อมูลเรียบร้อยแล้ว</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-stone-700">
+        ทีมงานจะตรวจสอบข้อมูลและติดต่อกลับตามรายละเอียดที่คุณส่งไว้
+        หากเป็นแบบฟอร์มองค์กรสามารถใช้หน้านี้เป็นปลายทางหลังส่งผ่าน Netlify Forms ได้ทันที
+      </p>
+      <div class="mt-8">
+        <a class="btn-primary !rounded-md !px-7 !py-3.5" href="/">กลับหน้าแรก</a>
+      </div>
+    </div>
+  </section>
+</Layout>

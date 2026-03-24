@@ -1,0 +1,51 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'About CONC',
+  description: 'หน้าแนะนำภาพรวมของ CONC และบทบาทของศูนย์',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">About</p>
+      <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-stone-900 md:text-5xl">About CONC</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้ใช้เป็น institutional overview ของเว็บไซต์ เพื่ออธิบายบทบาท ภารกิจ
+        และโครงสร้างคุณค่าของศูนย์ก่อนผู้ใช้จะไปยังหลักสูตรหรือบริการเฉพาะทาง
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="rounded-[2rem] bg-neutral-950 p-8 text-white">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-600">Mission</p>
+        <h2 class="mt-3 text-3xl font-semibold">เชื่อมองค์ความรู้ทางวิชาการสู่การพัฒนาคนและองค์กร</h2>
+        <p class="mt-5 text-base leading-8 text-white/75">
+          CONC ถูกออกแบบให้ทำหน้าที่เป็นศูนย์กลางของ executive education, consulting และ lifelong learning
+          โดยเน้นผลลัพธ์ที่นำไปใช้ได้จริงในบริบทธุรกิจและสังคม
+        </p>
+      </article>
+      <div class="grid gap-5">
+        <article class="rounded-[1.5rem] border border-stone-200 bg-white p-6">
+          <h3 class="text-xl font-semibold text-stone-900">Core roles</h3>
+          <ul class="mt-5 space-y-3 text-sm text-stone-700">
+            <li class="rounded-xl bg-neutral-100 px-4 py-3">Executive and professional development</li>
+            <li class="rounded-xl bg-neutral-100 px-4 py-3">Consulting and applied projects</li>
+            <li class="rounded-xl bg-neutral-100 px-4 py-3">Knowledge platform and public engagement</li>
+          </ul>
+        </article>
+        <article class="rounded-[1.5rem] border border-stone-200 bg-white p-6">
+          <h3 class="text-xl font-semibold text-stone-900">Why this page matters</h3>
+          <p class="mt-4 text-sm leading-7 text-stone-600">
+            ช่วยให้ผู้ใช้เข้าใจ positioning ของศูนย์ในภาพรวม เพิ่มความน่าเชื่อถือ
+            และทำให้เส้นทางจากหน้าแรกไปยังบริการต่าง ๆ มีบริบทที่ชัดขึ้น
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>

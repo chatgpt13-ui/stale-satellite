@@ -1,0 +1,40 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = async () =>
+  (await getCollection('executive')).map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }));
+
+const { item } = Astro.props;
+const metadata = {
+  title: item.data.name,
+  description: item.data.expertise,
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">{item.data.role}</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">{item.data.name}</h1>
+      <p class="mt-6 text-lg leading-8 text-stone-700">{item.data.expertise}</p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-16 md:px-6">
+    <div class="rounded-[2rem] border border-stone-200 bg-white p-8">
+      <h2 class="text-2xl font-semibold text-stone-900">Executive Profile</h2>
+      <p class="mt-5 text-base leading-8 text-stone-600">{item.data.bio}</p>
+      <div class="mt-8 grid gap-4 md:grid-cols-3">
+        {
+          item.data.highlights.map((highlight) => (
+            <div class="rounded-xl bg-neutral-100 px-4 py-4 text-sm text-stone-700">{highlight}</div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

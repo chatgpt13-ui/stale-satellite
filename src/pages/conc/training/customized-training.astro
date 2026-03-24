@@ -1,0 +1,157 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+
+const metadata = {
+  title: 'Customized Training',
+  description: 'หน้าบริการอบรมเฉพาะองค์กรพร้อมส่วนอธิบายกระบวนการและแบบฟอร์มสอบถาม',
+};
+
+const process = [
+  {
+    title: '1. Diagnose',
+    description: 'เริ่มจากการพูดคุยเพื่อเข้าใจบริบทธุรกิจ pain points และผลลัพธ์ที่องค์กรต้องการจริง',
+  },
+  {
+    title: '2. Design',
+    description: 'ออกแบบโครงหลักสูตร รูปแบบกิจกรรม และวิธีประเมินผลให้เหมาะกับระดับผู้เรียนและเป้าหมายขององค์กร',
+  },
+  {
+    title: '3. Deliver',
+    description: 'ส่งมอบการเรียนรู้ในรูปแบบ workshop, seminar, blended หรือ executive session ตามโจทย์ของทีมงาน',
+  },
+  {
+    title: '4. Evaluate',
+    description: 'สรุปผลการเรียนรู้และข้อเสนอแนะเพื่อต่อยอดเป็นแผนพัฒนาบุคลากรหรือโครงการระยะถัดไป',
+  },
+];
+
+const useCases = [
+  'Leadership development for high-potential managers',
+  'Cross-functional alignment for transformation programs',
+  'Capability building in strategy, finance, HR, and AI',
+  'Executive workshops for public and private sector organizations',
+];
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Training Service</p>
+      <h1 class="mt-4 max-w-4xl text-4xl font-semibold leading-tight text-stone-900 md:text-5xl">
+        Customized Training for Organizations
+      </h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้เปลี่ยนจาก sample page เป็นหน้า lead generation สำหรับบริการอบรมเฉพาะองค์กร โดยมีทั้ง value proposition,
+        ขั้นตอนทำงาน และแบบฟอร์มรับ brief เบื้องต้น
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="rounded-[2rem] bg-neutral-950 p-8 text-white">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-600">
+          Why organizations choose this service
+        </p>
+        <h2 class="mt-3 text-3xl font-semibold">ออกแบบการเรียนรู้จากโจทย์จริงขององค์กร</h2>
+        <p class="mt-5 text-base leading-8 text-white/75">
+          เหมาะกับองค์กรที่ไม่ต้องการใช้คอร์สมาตรฐานสำเร็จรูป แต่ต้องการหลักสูตรที่เชื่อมโยงกับบริบท ทีมงาน
+          ระดับผู้เรียน และผลลัพธ์เชิงธุรกิจที่วัดได้
+        </p>
+        <ul class="mt-8 space-y-3 text-sm text-white/85">
+          {useCases.map((item) => <li class="rounded-xl border border-white/10 bg-white/5 px-4 py-3">{item}</li>)}
+        </ul>
+      </div>
+      <div class="rounded-[2rem] border border-stone-200 bg-white p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Service fit</p>
+        <div class="mt-6 grid gap-4">
+          <div class="rounded-xl bg-neutral-100 p-4">
+            <p class="text-sm text-stone-500">Target clients</p>
+            <p class="mt-2 text-base font-medium text-stone-900">
+              Corporate, state enterprise, public sector, and family business teams
+            </p>
+          </div>
+          <div class="rounded-xl bg-neutral-100 p-4">
+            <p class="text-sm text-stone-500">Delivery formats</p>
+            <p class="mt-2 text-base font-medium text-stone-900">
+              Workshop, seminar, blended learning, leadership retreat
+            </p>
+          </div>
+          <div class="rounded-xl bg-neutral-100 p-4">
+            <p class="text-sm text-stone-500">Primary outcome</p>
+            <p class="mt-2 text-base font-medium text-stone-900">Request proposal and discovery session</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-stone-200 bg-neutral-100">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Process</p>
+      <h2 class="mt-3 text-3xl font-semibold text-stone-900 md:text-4xl">กระบวนการทำงานแบบ consultative</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {
+          process.map((item) => (
+            <article class="rounded-[1.5rem] border border-stone-200 bg-white p-6">
+              <h3 class="text-xl font-semibold text-stone-900">{item.title}</h3>
+              <p class="mt-4 text-sm leading-7 text-stone-600">{item.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <ContactUs
+    id="organization-inquiry"
+    title="Request a Customized Training Proposal"
+    subtitle="ส่งข้อมูลเบื้องต้นขององค์กรเพื่อให้ทีมงานออกแบบแนวทางหลักสูตรและนัดหมายพูดคุย"
+    tagline="Organization inquiry"
+    inputs={[
+      {
+        type: 'text',
+        name: 'organization',
+        label: 'Organization',
+        placeholder: 'ชื่อองค์กร',
+      },
+      {
+        type: 'text',
+        name: 'contact_name',
+        label: 'Contact name',
+        placeholder: 'ชื่อผู้ประสานงาน',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+        placeholder: 'name@company.com',
+      },
+      {
+        type: 'text',
+        name: 'team_size',
+        label: 'Team size',
+        placeholder: 'จำนวนผู้เข้าอบรมโดยประมาณ',
+      },
+    ]}
+    textarea={{
+      label: 'Training objective',
+      name: 'training_objective',
+      placeholder: 'อธิบายโจทย์ ปัญหา หรือผลลัพธ์ที่ต้องการจากการอบรม',
+      rows: 6,
+    }}
+    disclaimer={{
+      label: 'ยินยอมให้ทีมงานติดต่อกลับเพื่อนำเสนอแนวทางหลักสูตรและข้อมูลที่เกี่ยวข้อง',
+    }}
+    button="Request proposal"
+    description="ฟอร์มนี้พร้อมใช้งานกับ Netlify Forms และ redirect ไปยังหน้าขอบคุณหลังส่งสำเร็จ"
+    formOptions={{
+      name: 'customized-training-inquiry',
+      method: 'post',
+      action: '/contact-success',
+      netlify: true,
+      honeypot: 'company-website',
+    }}
+  />
+</Layout>

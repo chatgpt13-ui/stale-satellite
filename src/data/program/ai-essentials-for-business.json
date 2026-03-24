@@ -1,0 +1,15 @@
+{
+  "title": "AI Essentials for Business",
+  "category": "Online Courses",
+  "date": "28-29 May 2026",
+  "format": "Workshop",
+  "badge": "Popular",
+  "status": "Popular",
+  "summary": "ปูพื้นฐาน AI สำหรับการประยุกต์ใช้ในองค์กร ตั้งแต่ use case design ไปจนถึง governance และการใช้งานอย่างรับผิดชอบ",
+  "audience": "Business teams, managers, and non-technical professionals",
+  "outcomes": [
+    "เข้าใจภาพรวม AI ในธุรกิจ",
+    "ออกแบบ use case ที่ใช้งานได้จริง",
+    "มองเห็นความเสี่ยงและ governance เบื้องต้น"
+  ]
+}

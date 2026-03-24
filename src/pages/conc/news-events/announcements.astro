@@ -1,0 +1,47 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+
+const updateItems = await getCollection('update');
+const announcements = updateItems.filter((item) => item.data.type === 'Announcement');
+
+const metadata = {
+  title: 'Announcements',
+  description: 'หน้ารวมประกาศสำคัญของเว็บไซต์ CONC',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">News & Events</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">Announcements</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้แยกประกาศสำคัญออกจากข่าวทั่วไป เพื่อให้ผู้สมัครและองค์กรลูกค้าพลาดข้อมูล operational updates ได้น้อยลง
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6">
+      {
+        announcements.map((item) => (
+          <a
+            class="rounded-[1.75rem] border border-stone-200 bg-white p-7 transition hover:border-red-700"
+            href={getPermalink(`/updates/${item.id}`)}
+          >
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-red-700 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">
+                Announcement
+              </span>
+              <span class="text-sm text-stone-500">{item.data.date}</span>
+            </div>
+            <h2 class="mt-5 text-2xl font-semibold text-stone-900">{item.data.title}</h2>
+            <p class="mt-4 max-w-4xl text-sm leading-7 text-stone-600">{item.data.summary}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

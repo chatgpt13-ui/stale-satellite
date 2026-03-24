@@ -1,0 +1,42 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+
+const metadata = {
+  title: 'Service Field',
+  description: 'หน้ารวมสาขางานให้คำปรึกษาของ CONC',
+};
+
+const serviceAreas = await getCollection('service-area');
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Consulting Service</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">Service Field</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้เปลี่ยนจาก sample route เป็น consulting overview page
+        ที่ช่วยให้ลูกค้าเห็นขอบเขตงานของศูนย์ในภาพรวมก่อนเข้าสู่การพูดคุยเชิงลึก
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 md:grid-cols-2">
+      {
+        serviceAreas.map((item) => (
+          <article class="rounded-[1.75rem] border border-stone-200 bg-white p-7">
+            <h2 class="text-2xl font-semibold text-stone-900">{item.data.title}</h2>
+            <p class="mt-4 text-sm leading-7 text-stone-600">{item.data.description}</p>
+            <ul class="mt-6 space-y-3 text-sm text-stone-700">
+              {item.data.outcomes.map((outcome) => (
+                <li class="rounded-xl bg-neutral-100 px-4 py-3">{outcome}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

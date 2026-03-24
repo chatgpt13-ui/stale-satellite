@@ -1,0 +1,97 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+
+  <HeroText tagline="Contact" title="Let's Connect!" />
+
+  <ContactUs
+    id="form"
+    title="Contact CONC"
+    subtitle="ส่งคำถามทั่วไป ข้อเสนอแนะ หรือความต้องการเบื้องต้นเกี่ยวกับหลักสูตรและบริการของศูนย์ได้จากฟอร์มนี้"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+        placeholder: 'ชื่อผู้ติดต่อ',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+        placeholder: 'name@example.com',
+      },
+      {
+        type: 'text',
+        name: 'organization',
+        label: 'Organization',
+        placeholder: 'ชื่อองค์กรหรือหน่วยงาน',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+      name: 'message',
+      placeholder: 'อธิบายคำถามหรือสิ่งที่ต้องการให้ทีมงานติดต่อกลับ',
+      rows: 6,
+    }}
+    disclaimer={{
+      label: 'ยินยอมให้ทีมงานจัดเก็บข้อมูลที่จำเป็นเพื่อใช้ในการติดต่อกลับ',
+    }}
+    button="Send message"
+    description="ฟอร์มนี้ถูกตั้งค่าให้รองรับ Netlify Forms และ redirect ไปยังหน้าขอบคุณหลังส่งสำเร็จ"
+    formOptions={{
+      name: 'general-contact',
+      method: 'post',
+      action: '/contact-success',
+      netlify: true,
+      honeypot: 'company-website',
+    }}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="We are here to help!"
+    items={[
+      {
+        title: 'General support',
+        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+      },
+      {
+        title: 'Contact sales',
+        description:
+          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+      },
+      {
+        title: 'Technical support',
+        description:
+          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+      },
+      {
+        title: 'Phone',
+        description: '+1 (234) 567-890',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Email',
+        description: 'contact@support.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Location',
+        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
+</Layout>

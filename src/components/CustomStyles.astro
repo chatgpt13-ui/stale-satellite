@@ -1,0 +1,63 @@
+---
+
+---
+
+<style is:inline>
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --aw-font-sans: 'Sarabun', 'Segoe UI', sans-serif;
+    --aw-font-serif: 'Sarabun', 'Segoe UI', sans-serif;
+    --aw-font-heading: 'Kanit', 'Segoe UI', sans-serif;
+
+    --aw-color-primary: rgb(185 28 28);
+    --aw-color-secondary: rgb(127 29 29);
+    --aw-color-accent: rgb(55 65 81);
+
+    --aw-color-text-heading: rgb(17 24 39);
+    --aw-color-text-default: rgb(31 41 55);
+    --aw-color-text-muted: rgb(75 85 99 / 78%);
+    --aw-color-bg-page: rgb(249 250 251);
+
+    --aw-color-bg-page-dark: rgb(3 7 18);
+
+    ::selection {
+      background-color: rgb(254 202 202 / 85%);
+    }
+  }
+
+  .dark {
+    --aw-font-sans: 'Sarabun', 'Segoe UI', sans-serif;
+    --aw-font-serif: 'Sarabun', 'Segoe UI', sans-serif;
+    --aw-font-heading: 'Kanit', 'Segoe UI', sans-serif;
+
+    --aw-color-primary: rgb(239 68 68);
+    --aw-color-secondary: rgb(220 38 38);
+    --aw-color-accent: rgb(156 163 175);
+
+    --aw-color-text-heading: rgb(249 250 251);
+    --aw-color-text-default: rgb(229 231 235);
+    --aw-color-text-muted: rgb(209 213 219 / 72%);
+    --aw-color-bg-page: rgb(3 7 18);
+
+    ::selection {
+      background-color: rgb(127 29 29 / 75%);
+      color: rgb(249 250 251);
+    }
+  }
+
+  body {
+    font-family: var(--aw-font-sans);
+    background: rgb(255 255 255);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--aw-font-heading);
+    letter-spacing: -0.025em;
+  }
+</style>

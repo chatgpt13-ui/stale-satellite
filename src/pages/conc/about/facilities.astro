@@ -1,0 +1,47 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const facilities = [
+  {
+    title: 'Training Rooms',
+    description: 'ห้องอบรมสำหรับ workshop, seminar และ executive session ที่ปรับรูปแบบการจัดที่นั่งได้',
+  },
+  { title: 'Breakout Space', description: 'พื้นที่สำหรับ group discussion และกิจกรรมแลกเปลี่ยนระหว่าง session' },
+  { title: 'AV Support', description: 'รองรับ presentation, hybrid session และการใช้งานอุปกรณ์ภาพและเสียงพื้นฐาน' },
+  {
+    title: 'Hospitality Flow',
+    description: 'พื้นที่ลงทะเบียน จุดรับรอง และองค์ประกอบที่ช่วยให้ประสบการณ์ผู้เรียนต่อเนื่องตลอดวัน',
+  },
+];
+
+const metadata = {
+  title: 'Facilities',
+  description: 'หน้าสถานที่และสิ่งอำนวยความสะดวกของ CONC',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">About</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">Facilities</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้ใช้แสดงความพร้อมของสถานที่และประสบการณ์การเรียนรู้
+        เพื่อสนับสนุนการตัดสินใจขององค์กรที่กำลังมองหาพื้นที่หรือโปรแกรมอบรมที่มีความพร้อมด้าน venue
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {
+        facilities.map((item) => (
+          <article class="rounded-[1.5rem] border border-stone-200 bg-white p-6">
+            <h2 class="text-xl font-semibold text-stone-900">{item.title}</h2>
+            <p class="mt-4 text-sm leading-7 text-stone-600">{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

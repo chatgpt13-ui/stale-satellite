@@ -1,0 +1,58 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Program Calendars',
+  description: 'หน้าตารางกำหนดการหลักสูตรตัวอย่างของเว็บไซต์ CONC',
+};
+
+const calendarItems = await getCollection('program');
+---
+
+<Layout metadata={metadata}>
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">News & Events</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">Program Calendars</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        หน้านี้เริ่มทำหน้าที่เป็น program schedule จริง โดยสรุปช่วงเวลา หมวดหลักสูตร รูปแบบการเรียน
+        และสถานะไว้ในจุดเดียว
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="overflow-hidden rounded-[1.75rem] border border-stone-200 bg-white">
+      <div
+        class="grid grid-cols-[1.4fr_1fr_1fr_1fr] border-b border-stone-200 bg-neutral-100 px-6 py-4 text-sm font-semibold text-stone-700"
+      >
+        <div>Program</div>
+        <div>Date</div>
+        <div>Category</div>
+        <div>Status</div>
+      </div>
+      {
+        calendarItems.map((item) => (
+          <a
+            class="grid grid-cols-1 gap-3 border-b border-stone-200 px-6 py-5 transition hover:bg-neutral-50 md:grid-cols-[1.4fr_1fr_1fr_1fr]"
+            href={getPermalink(`/programs/${item.id}`)}
+          >
+            <div>
+              <p class="font-medium text-stone-900">{item.data.title}</p>
+              <p class="mt-1 text-sm text-stone-500">{item.data.format}</p>
+            </div>
+            <div class="text-sm text-stone-700">{item.data.date}</div>
+            <div class="text-sm text-stone-700">{item.data.category}</div>
+            <div>
+              <span class="rounded-full border border-red-700 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-red-700">
+                {item.data.status}
+              </span>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Layout>
