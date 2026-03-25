@@ -97,12 +97,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu rounded bg-red-800/95 pl-4 font-medium drop-shadow-xl md:absolute md:min-w-[200px] md:hidden md:pl-0 md:backdrop-blur-md">
+                  <ul class="dropdown-menu rounded bg-gray-800/95 pl-4 font-medium drop-shadow-xl md:absolute md:min-w-[200px] md:hidden md:pl-0 md:backdrop-blur-md">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li>
                         <a
                           class:list={[
-                            'block whitespace-no-wrap px-5 py-2 text-white transition first:rounded-t last:rounded-b hover:bg-red-900/60 hover:text-red-100',
+                            'block whitespace-no-wrap px-5 py-2 text-white transition first:rounded-t last:rounded-b hover:bg-gray-700/80 hover:text-white',
                             { 'aw-link-active': href2 === currentPath },
                           ]}
                           href={href2}
