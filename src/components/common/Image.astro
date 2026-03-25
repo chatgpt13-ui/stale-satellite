@@ -43,7 +43,9 @@ let image: ImageType | undefined = undefined;
 const isRemoteImage = typeof _image === 'string' && (_image.startsWith('http://') || _image.startsWith('https://'));
 
 if (isRemoteImage) {
-  const { src: _, ...attributes } = props;
+  const attributes = Object.fromEntries(
+    Object.entries(props).filter(([key]) => key !== 'src')
+  ) as HTMLAttributes<'img'>;
   image = {
     src: _image,
     attributes,

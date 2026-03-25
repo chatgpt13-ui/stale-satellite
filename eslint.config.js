@@ -54,6 +54,13 @@ export default [
     },
   },
   {
-    ignores: ['dist', 'node_modules', '.github', 'types.generated.d.ts', '.astro'],
+    ignores: [
+      '**/dist/**',
+      '**/.astro/**',
+      '**/node_modules/**',
+      '.github/**',
+      'types.generated.d.ts',
+      'conc-website/**',
+    ],
   },
 ];
