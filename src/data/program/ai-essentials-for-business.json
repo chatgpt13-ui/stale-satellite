@@ -11,5 +11,51 @@
     "เข้าใจภาพรวม AI ในธุรกิจ",
     "ออกแบบ use case ที่ใช้งานได้จริง",
     "มองเห็นความเสี่ยงและ governance เบื้องต้น"
+  ],
+  "duration": "2 days intensive workshop",
+  "venue": "TBS Learning Center, Bangkok",
+  "fee": "THB 18,500 per participant",
+  "language": "Thai with selected English terminology",
+  "classSize": "30 participants",
+  "certificate": "Certificate of completion",
+  "overview": [
+    "หลักสูตรนี้ช่วยให้ผู้บริหารและทีมงานที่ไม่ใช่สายเทคนิคเข้าใจ AI ในมุมของการใช้งานจริงทางธุรกิจ ไม่ใช่เพียงแนวคิดเชิงเทคนิค",
+    "ผู้เรียนจะได้เห็นตัวอย่าง use case, วิธีประเมินความพร้อมขององค์กร, และหลักคิดเรื่องความเสี่ยง ความเป็นส่วนตัว และ governance ที่ควรรู้ก่อนเริ่มต้นโครงการ"
+  ],
+  "instructors": [
+    {
+      "name": "Dr. Nalin Sutham",
+      "role": "Lead instructor",
+      "organization": "CONC Thammasat"
+    },
+    {
+      "name": "Assoc. Prof. Maya Rattanakul",
+      "role": "Guest speaker",
+      "organization": "Thammasat Business School"
+    }
+  ],
+  "agenda": [
+    {
+      "title": "AI landscape for executives",
+      "description": "ภาพรวม AI, generative AI, และแนวโน้มที่มีผลต่อธุรกิจและการทำงานในองค์กร"
+    },
+    {
+      "title": "Use case design workshop",
+      "description": "ฝึกระบุ pain points และออกแบบ use case ที่มีผลกระทบและเริ่มต้นได้จริง"
+    },
+    {
+      "title": "Governance and responsible adoption",
+      "description": "สรุปหลักคิดเรื่องความเสี่ยง นโยบาย และแนวปฏิบัติที่ช่วยให้องค์กรใช้งาน AI อย่างรับผิดชอบ"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "ต้องมีพื้นฐานเทคนิคหรือไม่",
+      "answer": "ไม่จำเป็น หลักสูตรออกแบบมาสำหรับผู้บริหารและทีมงานธุรกิจที่ต้องการเข้าใจการใช้งาน AI ในมุม business impact"
+    },
+    {
+      "question": "เหมาะกับการส่งทีมจากองค์กรหรือไม่",
+      "answer": "เหมาะ โดยเฉพาะทีม cross-functional ที่ต้องการสร้างความเข้าใจร่วมกันก่อนเริ่มโครงการ AI ในองค์กร"
+    }
   ]
 }

@@ -7,5 +7,51 @@
   "status": "Upcoming",
   "summary": "สร้างความเข้าใจการเงินสำหรับผู้บริหารที่ไม่มีพื้นฐานบัญชี เพื่อใช้ตัดสินใจทางธุรกิจได้มั่นใจขึ้น",
   "audience": "Non-financial executives and business owners",
-  "outcomes": ["อ่านงบการเงินได้", "เข้าใจต้นทุนและ cash flow", "คุยกับทีมการเงินได้มีประสิทธิภาพขึ้น"]
+  "outcomes": ["อ่านงบการเงินได้", "เข้าใจต้นทุนและ cash flow", "คุยกับทีมการเงินได้มีประสิทธิภาพขึ้น"],
+  "duration": "6-week weekend program",
+  "venue": "CONC Executive Classroom, Bangkok",
+  "fee": "THB 36,000 per participant",
+  "language": "Thai",
+  "classSize": "35 participants",
+  "certificate": "Certificate of completion",
+  "overview": [
+    "หลักสูตรนี้ช่วยให้ผู้บริหารที่ไม่ได้จบสายบัญชีหรือการเงินอ่านข้อมูลทางการเงินได้อย่างมั่นใจ และเชื่อมโยงตัวเลขกับการตัดสินใจเชิงกลยุทธ์",
+    "เนื้อหาเน้นการใช้งานจริงในบทบาทผู้บริหาร เช่น การอ่านงบ การทำความเข้าใจต้นทุน กระแสเงินสด และการตั้งคำถามที่ถูกต้องกับทีมการเงิน"
+  ],
+  "instructors": [
+    {
+      "name": "Mr. Krit Vacharawong",
+      "role": "Program lead",
+      "organization": "CONC Thammasat"
+    },
+    {
+      "name": "External finance practitioner panel",
+      "role": "Industry guest speakers",
+      "organization": "Partner organizations"
+    }
+  ],
+  "agenda": [
+    {
+      "title": "Financial statement fundamentals",
+      "description": "ทำความเข้าใจโครงสร้างของงบกำไรขาดทุน งบดุล และงบกระแสเงินสดในภาษาที่ผู้บริหารใช้ได้จริง"
+    },
+    {
+      "title": "Cost, margin, and cash flow decisions",
+      "description": "เชื่อมข้อมูลต้นทุน margin และ cash flow เข้ากับการตั้งราคา การลงทุน และการบริหารผลประกอบการ"
+    },
+    {
+      "title": "Executive finance dialogue",
+      "description": "ฝึกกรอบคำถามและการตีความข้อมูลทางการเงินเพื่อทำงานร่วมกับ CFO หรือทีมบัญชีได้มีประสิทธิภาพขึ้น"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "ผู้ไม่มีพื้นฐานบัญชีเรียนได้หรือไม่",
+      "answer": "ได้ หลักสูตรนี้ออกแบบมาสำหรับผู้บริหารที่ต้องการเข้าใจการเงินในระดับตัดสินใจ ไม่ใช่เพื่อทำบัญชีเชิงเทคนิค"
+    },
+    {
+      "question": "มีงาน workshop หรือไม่",
+      "answer": "มี โดยจะใช้กรณีศึกษาและแบบฝึกที่ช่วยให้เชื่อมข้อมูลทางการเงินเข้ากับบริบทธุรกิจจริง"
+    }
+  ]
 }

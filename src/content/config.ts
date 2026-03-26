@@ -76,6 +76,22 @@ const executiveCollection = defineCollection({
   }),
 });
 
+const instructorDefinition = z.object({
+  name: z.string(),
+  role: z.string(),
+  organization: z.string(),
+});
+
+const agendaItemDefinition = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+const faqItemDefinition = z.object({
+  question: z.string(),
+  answer: z.string(),
+});
+
 const programCollection = defineCollection({
   loader: glob({ pattern: ['*.json'], base: 'src/data/program' }),
   schema: z.object({
@@ -88,6 +104,16 @@ const programCollection = defineCollection({
     summary: z.string(),
     audience: z.string(),
     outcomes: z.array(z.string()),
+    duration: z.string(),
+    venue: z.string(),
+    fee: z.string(),
+    language: z.string(),
+    classSize: z.string(),
+    certificate: z.string(),
+    overview: z.array(z.string()),
+    instructors: z.array(instructorDefinition),
+    agenda: z.array(agendaItemDefinition),
+    faqs: z.array(faqItemDefinition),
   }),
 });
 

@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from '~/layouts/PageLayout.astro';
 import { getCollection } from 'astro:content';
 import { getPermalink } from '~/utils/permalinks';
@@ -15,69 +16,276 @@ const metadata = {
   description: item.data.summary,
 };
 const applyHref = getPermalink(`/programs/${item.id}/apply`);
+const listingHref = getPermalink('/conc/training/open-enrollment');
+
+const keyFacts = [
+  { label: 'Category', value: item.data.category, icon: 'tabler:bookmark' },
+  { label: 'Format', value: item.data.format, icon: 'tabler:presentation' },
+  { label: 'Date', value: item.data.date, icon: 'tabler:calendar-event' },
+  { label: 'Status', value: item.data.status, icon: 'tabler:clock-hour-4' },
+];
+
+const summaryFacts = [
+  { label: 'Duration', value: item.data.duration },
+  { label: 'Venue', value: item.data.venue },
+  { label: 'Fee', value: item.data.fee },
+  { label: 'Language', value: item.data.language },
+  { label: 'Class size', value: item.data.classSize },
+  { label: 'Certificate', value: item.data.certificate },
+];
+
+const applicationSteps = [
+  {
+    title: 'Review program details',
+    description: 'ตรวจสอบรูปแบบหลักสูตร กลุ่มเป้าหมาย และผลลัพธ์การเรียนรู้ให้ตรงกับสิ่งที่ต้องการ',
+  },
+  {
+    title: 'Sign in with Google',
+    description: 'เข้าสู่ระบบด้วย Google เพื่อ prefill ชื่อและอีเมลของผู้สมัครก่อนกรอกข้อมูลเพิ่มเติม',
+  },
+  {
+    title: 'Submit application',
+    description: 'ส่งใบสมัครและรอทีมงานติดต่อกลับเพื่อยืนยันสิทธิ์ ขั้นตอนถัดไป หรือข้อมูลเพิ่มเติมที่จำเป็น',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
-  <section class="border-b border-stone-200 bg-white">
-    <div class="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
-      <div class="flex flex-wrap items-center gap-3">
-        <span class="rounded-full bg-red-700 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white">
-          {item.data.badge}
-        </span>
-        <span class="text-sm text-stone-500">{item.data.category}</span>
-        <span class="text-sm text-stone-500">{item.data.date}</span>
-      </div>
-      <h1 class="mt-5 text-4xl font-semibold text-stone-900 md:text-5xl">{item.data.title}</h1>
-      <p class="mt-6 text-lg leading-8 text-stone-700">{item.data.summary}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a class="btn-primary !rounded-md !px-7 !py-3.5" href={applyHref}>สมัครด้วย Google</a>
-        <a class="btn-secondary !rounded-md !px-7 !py-3.5" href={getPermalink('/conc/training/open-enrollment')}
-          >กลับไปหน้ารวมหลักสูตร</a
-        >
+  <section class="border-b border-stone-200 bg-[linear-gradient(180deg,#ffffff_0%,#f8f5f2_100%)]">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6 md:py-20">
+      <a
+        class="inline-flex items-center text-sm font-medium text-stone-600 transition hover:text-red-700"
+        href={listingHref}
+      >
+        <Icon name="tabler:arrow-left" class="mr-2 h-4 w-4" />
+        กลับไปหน้ารวมหลักสูตร
+      </a>
+
+      <div class="mt-6 grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <span
+              class="rounded-full bg-red-700 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-white"
+            >
+              {item.data.badge}
+            </span>
+            <span
+              class="rounded-full border border-stone-300 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-stone-600"
+            >
+              {item.data.status}
+            </span>
+          </div>
+
+          <h1 class="mt-6 max-w-4xl text-4xl font-semibold leading-tight text-stone-900 md:text-5xl lg:text-6xl">
+            {item.data.title}
+          </h1>
+          <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">{item.data.summary}</p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a class="btn-primary !rounded-md !px-7 !py-3.5" href={applyHref}>สมัครหลักสูตรนี้</a>
+            <a class="btn-secondary !rounded-md !px-7 !py-3.5" href="#outcomes">ดูผลลัพธ์การเรียนรู้</a>
+          </div>
+
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            {
+              keyFacts.map((fact) => (
+                <div class="rounded-[1.5rem] border border-stone-200 bg-white p-5 shadow-[0_20px_60px_-32px_rgba(41,37,36,0.25)]">
+                  <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-neutral-100 text-red-700">
+                    <Icon name={fact.icon} class="h-5 w-5" />
+                  </div>
+                  <p class="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-stone-500">{fact.label}</p>
+                  <p class="mt-2 text-sm font-medium leading-6 text-stone-900">{fact.value}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <aside class="lg:sticky lg:top-24">
+          <div class="rounded-[2rem] border border-neutral-900 bg-neutral-950 p-8 text-white">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-500">Quick application</p>
+            <h2 class="mt-4 text-3xl font-semibold leading-tight">พร้อมสมัครแล้วหรือยัง</h2>
+            <p class="mt-4 text-sm leading-7 text-white/75">
+              ใช้ Google Sign-In เพื่อกรอกชื่อและอีเมลอัตโนมัติ จากนั้นส่งใบสมัครพร้อมข้อมูลติดต่อกลับได้ทันที
+            </p>
+            <div class="mt-6 space-y-4 border-t border-white/10 pt-6 text-sm text-white/80">
+              {
+                summaryFacts.map((fact) => (
+                  <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.14em] text-white/45">{fact.label}</p>
+                    <p class="mt-1 leading-6 text-white">{fact.value}</p>
+                  </div>
+                ))
+              }
+            </div>
+            <div class="mt-8 grid gap-3">
+              <a class="btn-primary !rounded-md !px-7 !py-3.5" href={applyHref}>สมัครด้วย Google</a>
+              <a class="btn-secondary !rounded-md !border-white/20 !px-7 !py-3.5 !text-white" href="/contact#form">
+                สอบถามก่อนสมัคร
+              </a>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
 
-  <section class="mx-auto max-w-5xl px-4 py-16 md:px-6">
-    <div class="grid gap-6 md:grid-cols-2">
-      <article class="rounded-[1.75rem] border border-stone-200 bg-white p-7">
-        <h2 class="text-2xl font-semibold text-stone-900">Program Overview</h2>
-        <dl class="mt-6 space-y-4 text-sm text-stone-700">
-          <div>
-            <dt class="text-stone-500">Format</dt>
-            <dd class="mt-1">{item.data.format}</dd>
-          </div>
-          <div>
-            <dt class="text-stone-500">Audience</dt>
-            <dd class="mt-1">{item.data.audience}</dd>
-          </div>
-          <div>
-            <dt class="text-stone-500">Date</dt>
-            <dd class="mt-1">{item.data.date}</dd>
-          </div>
-          <div>
-            <dt class="text-stone-500">Status</dt>
-            <dd class="mt-1">{item.data.status}</dd>
-          </div>
-        </dl>
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="rounded-[1.75rem] border border-stone-200 bg-white p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Program overview</p>
+        <h2 class="mt-3 text-3xl font-semibold text-stone-900">ภาพรวมหลักสูตร</h2>
+        <div class="mt-6 space-y-4 text-base leading-8 text-stone-700">
+          {item.data.overview.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
       </article>
-      <article class="rounded-[1.75rem] border border-stone-200 bg-white p-7">
-        <h2 class="text-2xl font-semibold text-stone-900">Learning Outcomes</h2>
-        <ul class="mt-6 space-y-3 text-sm text-stone-700">
-          {item.data.outcomes.map((outcome) => <li class="rounded-xl bg-neutral-100 px-4 py-3">{outcome}</li>)}
-        </ul>
+
+      <article class="rounded-[1.75rem] border border-stone-200 bg-white p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Who should attend</p>
+        <h2 class="mt-3 text-3xl font-semibold text-stone-900">หลักสูตรนี้เหมาะกับใคร</h2>
+        <div class="mt-6 rounded-[1.5rem] bg-neutral-100 p-6">
+          <p class="text-base leading-8 text-stone-800">{item.data.audience}</p>
+        </div>
+        <p class="mt-5 text-sm leading-7 text-stone-600">
+          หากต้องการประเมินความเหมาะสมของหลักสูตรสำหรับทีมงานหรือองค์กร
+          สามารถใช้หน้าสมัครหรือฟอร์มติดต่อเพื่อส่งคำถามเพิ่มเติมได้
+        </p>
       </article>
     </div>
+  </section>
 
-    <div class="mt-8 rounded-[1.75rem] border border-stone-200 bg-neutral-950 p-8 text-white">
-      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-500">Application</p>
-      <h2 class="mt-3 text-3xl font-semibold">ลงทะเบียนด้วย Google แล้วส่งใบสมัครได้ทันที</h2>
-      <p class="mt-4 max-w-3xl text-sm leading-7 text-white/75">
-        ระบบสมัครเรียนจะใช้ Google Sign-In เพื่อดึงชื่อและอีเมลของผู้สมัคร
-        จากนั้นให้กรอกรายละเอียดเพิ่มเติมที่จำเป็นต่อการติดต่อกลับและประสานงานเรื่องการสมัคร
+  <section id="outcomes" class="border-y border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Learning outcomes</p>
+          <h2 class="mt-3 text-3xl font-semibold text-stone-900 md:text-4xl">สิ่งที่ผู้เรียนจะได้รับ</h2>
+        </div>
+        <p class="max-w-2xl text-base leading-7 text-stone-600">
+          สรุปผลลัพธ์หลักของหลักสูตรในรูปแบบที่อ่านง่าย เพื่อช่วยให้ผู้สมัครและหัวหน้างานประเมินความคุ้มค่าได้เร็วขึ้น
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {
+          item.data.outcomes.map((outcome, index) => (
+            <article class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-6">
+              <p class="text-xs font-semibold uppercase tracking-[0.14em] text-red-700">Outcome {index + 1}</p>
+              <p class="mt-4 text-base leading-7 text-stone-800">{outcome}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <article class="rounded-[1.75rem] border border-stone-200 bg-white p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Learning agenda</p>
+        <h2 class="mt-3 text-3xl font-semibold text-stone-900">หัวข้อสำคัญของหลักสูตร</h2>
+        <div class="mt-8 space-y-5">
+          {
+            item.data.agenda.map((agendaItem, index) => (
+              <div class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-6">
+                <div class="flex items-center gap-3">
+                  <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-red-700 text-sm font-semibold text-white">
+                    {index + 1}
+                  </div>
+                  <h3 class="text-xl font-semibold text-stone-900">{agendaItem.title}</h3>
+                </div>
+                <p class="mt-4 text-sm leading-7 text-stone-600">{agendaItem.description}</p>
+              </div>
+            ))
+          }
+        </div>
+      </article>
+
+      <article class="rounded-[1.75rem] border border-stone-200 bg-white p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Instructors</p>
+        <h2 class="mt-3 text-3xl font-semibold text-stone-900">วิทยากรและผู้เชี่ยวชาญ</h2>
+        <div class="mt-8 space-y-5">
+          {
+            item.data.instructors.map((instructor) => (
+              <div class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-6">
+                <h3 class="text-xl font-semibold text-stone-900">{instructor.name}</h3>
+                <p class="mt-2 text-sm font-medium text-red-700">{instructor.role}</p>
+                <p class="mt-2 text-sm leading-7 text-stone-600">{instructor.organization}</p>
+              </div>
+            ))
+          }
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+    <div class="rounded-[2rem] border border-stone-200 bg-white p-8 md:p-10">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Application process</p>
+          <h2 class="mt-3 text-3xl font-semibold text-stone-900 md:text-4xl">ขั้นตอนการสมัคร</h2>
+        </div>
+        <p class="max-w-2xl text-base leading-7 text-stone-600">
+          ใช้ flow แบบมาตรฐานที่ผู้สมัครคุ้นเคย: อ่านข้อมูล, ยืนยันตัวตน,
+          แล้วส่งใบสมัครพร้อมข้อมูลที่จำเป็นต่อการติดต่อกลับ
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {
+          applicationSteps.map((step, index) => (
+            <article class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-6">
+              <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-red-700 text-sm font-semibold text-white">
+                {index + 1}
+              </div>
+              <h3 class="mt-5 text-xl font-semibold text-stone-900">{step.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-stone-600">{step.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-stone-200 bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 md:px-6">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">FAQ</p>
+          <h2 class="mt-3 text-3xl font-semibold text-stone-900 md:text-4xl">คำถามที่พบบ่อย</h2>
+        </div>
+        <p class="max-w-2xl text-base leading-7 text-stone-600">
+          รวมคำถามพื้นฐานที่ผู้สมัครมักใช้ประกอบการตัดสินใจก่อนส่งใบสมัครหรือสอบถามเพิ่มเติมกับทีมงาน
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {
+          item.data.faqs.map((faq) => (
+            <article class="rounded-[1.5rem] border border-stone-200 bg-stone-50 p-6">
+              <h3 class="text-xl font-semibold text-stone-900">{faq.question}</h3>
+              <p class="mt-4 text-sm leading-7 text-stone-600">{faq.answer}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 pb-16 pt-16 md:px-6 md:pb-20">
+    <div class="rounded-[2rem] bg-neutral-950 p-8 text-white md:p-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-500">Ready to apply</p>
+      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">พร้อมเริ่มต้นขั้นตอนสมัครหลักสูตรนี้แล้ว</h2>
+      <p class="mt-4 max-w-3xl text-base leading-8 text-white/75">
+        เมื่อเข้าสู่ระบบด้วย Google แล้ว ระบบจะช่วยกรอกข้อมูลผู้สมัครเบื้องต้นให้โดยอัตโนมัติ
+        เพื่อให้ส่งใบสมัครได้รวดเร็วและเป็นระเบียบมากขึ้น
       </p>
-      <div class="mt-6">
-        <a class="btn-primary !rounded-md !px-7 !py-3.5" href={applyHref}>ไปหน้าสมัครหลักสูตรนี้</a>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a class="btn-primary !rounded-md !px-7 !py-3.5" href={applyHref}>สมัครหลักสูตรนี้</a>
+        <a class="btn-secondary !rounded-md !border-white/20 !px-7 !py-3.5 !text-white" href={listingHref}>
+          ดูหลักสูตรอื่น
+        </a>
       </div>
     </div>
   </section>

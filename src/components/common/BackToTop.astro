@@ -1,0 +1,42 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button
+  type="button"
+  class="fixed bottom-6 right-6 z-40 hidden h-12 w-12 items-center justify-center rounded-full border border-stone-300 bg-white text-stone-700 shadow-[0_18px_45px_-24px_rgba(41,37,36,0.45)] transition hover:-translate-y-0.5 hover:border-red-700 hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-red-200"
+  aria-label="Back to top"
+  data-back-to-top
+>
+  <Icon name="tabler:arrow-up" class="h-5 w-5" />
+</button>
+
+<script is:inline>
+  const initBackToTop = () => {
+    const button = document.querySelector('[data-back-to-top]');
+
+    if (!(button instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    const toggleVisibility = () => {
+      if (window.scrollY > 360) {
+        button.classList.remove('hidden');
+        button.classList.add('inline-flex');
+      } else {
+        button.classList.add('hidden');
+        button.classList.remove('inline-flex');
+      }
+    };
+
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    toggleVisibility();
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
+  };
+
+  initBackToTop();
+  document.addEventListener('astro:after-swap', initBackToTop);
+</script>

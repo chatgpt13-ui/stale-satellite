@@ -1,15 +1,61 @@
 {
   "title": "Strategic Insights into China’s Economy and Capital Markets",
-  "category": "Finance & Accounting",
+  "category": "Strategy Development",
   "date": "16 May 2026",
-  "format": "On-site seminar",
+  "format": "Executive briefing",
   "badge": "Update",
   "status": "Open",
-  "summary": "ทำความเข้าใจโครงสร้างเศรษฐกิจจีน ตลาดทุน และแนวโน้มการลงทุนที่มีผลต่อผู้บริหารและนักลงทุนไทย",
+  "summary": "หลักสูตรสำหรับผู้บริหารและนักลงทุนที่ต้องการเข้าใจเศรษฐกิจจีน โครงสร้างตลาดทุน และแนวโน้มการลงทุนระหว่างประเทศ",
   "audience": "Executives, investors, and strategy teams",
   "outcomes": [
-    "เข้าใจภาพรวมเศรษฐกิจจีน",
-    "เห็นโครงสร้าง equity market และ mutual fund industry",
-    "เชื่อม insight สู่การตัดสินใจลงทุน"
+    "เข้าใจทิศทางเศรษฐกิจจีน",
+    "เชื่อมโยงประเด็นมหภาคกับการลงทุน",
+    "มองเห็นผลกระทบต่อกลยุทธ์ธุรกิจในภูมิภาค"
+  ],
+  "duration": "1-day executive briefing",
+  "venue": "Thammasat Business School Conference Room",
+  "fee": "THB 16,000 per participant",
+  "language": "Thai with bilingual materials",
+  "classSize": "50 participants",
+  "certificate": "Executive briefing certificate",
+  "overview": [
+    "หลักสูตรนี้ช่วยให้ผู้บริหารและนักลงทุนติดตามภาพใหญ่ของเศรษฐกิจจีนในช่วงที่ภูมิรัฐศาสตร์ การกำกับดูแล และภาวะตลาดทุนมีผลกระทบต่อการตัดสินใจสูง",
+    "เนื้อหาเน้นการตีความสัญญาณเชิงกลยุทธ์ มากกว่าการวิเคราะห์เชิงวิชาการล้วน เพื่อให้ผู้เข้าร่วมใช้ต่อยอดกับการวางแผนธุรกิจและการลงทุนได้จริง"
+  ],
+  "instructors": [
+    {
+      "name": "Dr. Nalin Sutham",
+      "role": "Program moderator",
+      "organization": "CONC Thammasat"
+    },
+    {
+      "name": "China market specialist panel",
+      "role": "Guest experts",
+      "organization": "Capital market and strategy partners"
+    }
+  ],
+  "agenda": [
+    {
+      "title": "China macro outlook",
+      "description": "วิเคราะห์แนวโน้มเศรษฐกิจจีน ปัจจัยขับเคลื่อนการเติบโต และประเด็นเสี่ยงในระยะกลาง"
+    },
+    {
+      "title": "Capital markets and investor signals",
+      "description": "ทำความเข้าใจสัญญาณจากตลาดทุนจีน ภาคอสังหา เทคโนโลยี และมุมมองของนักลงทุนสถาบัน"
+    },
+    {
+      "title": "Regional strategy implications",
+      "description": "เชื่อมมุมมองเศรษฐกิจจีนกับผลกระทบต่อธุรกิจไทย ห่วงโซ่อุปทาน และการตัดสินใจเชิงกลยุทธ์ในภูมิภาค"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "หลักสูตรนี้เหมาะกับคนสายการเงินเท่านั้นหรือไม่",
+      "answer": "ไม่จำเป็น เหมาะทั้งผู้บริหารสายกลยุทธ์ นักลงทุน และทีม business development ที่ต้องติดตามผลกระทบจากเศรษฐกิจจีน"
+    },
+    {
+      "question": "เนื้อหาเน้นมุมมองเชิงลงทุนหรือเชิงธุรกิจมากกว่า",
+      "answer": "ครอบคลุมทั้งสองมิติ โดยเน้นการแปลภาพมหภาคและสัญญาณตลาดให้เป็นนัยต่อการวางแผนธุรกิจและการลงทุน"
+    }
   ]
 }

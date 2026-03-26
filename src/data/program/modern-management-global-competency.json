@@ -7,5 +7,51 @@
   "status": "Open",
   "summary": "เสริมกรอบคิดการจัดการสมัยใหม่ ภาวะผู้นำ และการตัดสินใจในบริบทธุรกิจที่เชื่อมโยงระดับโลก",
   "audience": "Senior managers and future leaders",
-  "outcomes": ["พัฒนาทักษะผู้นำ", "ยกระดับ strategic thinking", "เชื่อม management tools สู่การปฏิบัติ"]
+  "outcomes": ["พัฒนาทักษะผู้นำ", "ยกระดับ strategic thinking", "เชื่อม management tools สู่การปฏิบัติ"],
+  "duration": "1-day intensive seminar",
+  "venue": "Hybrid: Bangkok classroom and live online access",
+  "fee": "THB 14,500 per participant",
+  "language": "English with Thai facilitation",
+  "classSize": "40 participants",
+  "certificate": "Certificate of participation",
+  "overview": [
+    "หลักสูตรนี้มุ่งพัฒนาผู้นำรุ่นใหม่และผู้บริหารระดับกลางถึงสูงให้รับมือกับบริบทธุรกิจระหว่างประเทศและความเปลี่ยนแปลงที่รวดเร็วได้ดีขึ้น",
+    "ผู้เรียนจะได้ทบทวนแนวคิด management สมัยใหม่ การบริหารทีมในบริบทข้ามวัฒนธรรม และการตัดสินใจที่อาศัยทั้งมุมมองเชิงกลยุทธ์และ execution"
+  ],
+  "instructors": [
+    {
+      "name": "Assoc. Prof. Maya Rattanakul",
+      "role": "Academic lead",
+      "organization": "Thammasat Business School"
+    },
+    {
+      "name": "International guest lecturer",
+      "role": "Visiting faculty",
+      "organization": "Global partner institution"
+    }
+  ],
+  "agenda": [
+    {
+      "title": "Global leadership mindset",
+      "description": "สำรวจกรอบคิดและความสามารถที่ผู้นำต้องมีเมื่อต้องทำงานในสภาพแวดล้อมที่เชื่อมโยงระดับโลก"
+    },
+    {
+      "title": "Decision-making under complexity",
+      "description": "ฝึกมองปัญหาเชิงระบบและตัดสินใจภายใต้ข้อจำกัด ความไม่แน่นอน และ stakeholder ที่หลากหลาย"
+    },
+    {
+      "title": "From insight to execution",
+      "description": "เชื่อม management tools และ leadership practices เข้ากับการขับเคลื่อนทีมและผลลัพธ์ในองค์กรจริง"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "หลักสูตรนี้เหมาะกับระดับใดขององค์กร",
+      "answer": "เหมาะกับ senior managers, high-potential leaders และผู้บริหารที่ต้องรับผิดชอบทีมหรือโครงการเชิงกลยุทธ์"
+    },
+    {
+      "question": "จำเป็นต้องใช้ภาษาอังกฤษคล่องหรือไม่",
+      "answer": "ไม่จำเป็นต้องคล่องระดับวิชาการ แต่ผู้เรียนควรพร้อมรับเนื้อหาภาษาอังกฤษบางส่วนและมีทีมงานช่วยอำนวยความเข้าใจเป็นภาษาไทย"
+    }
+  ]
 }
