@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -88,7 +88,7 @@ export const headerData = {
       ],
     },
   ],
-  actions: [{ text: 'Contact Us', href: getPermalink('/#contact') }],
+  actions: [{ text: 'Contact Us', href: getPermalink('/contact#form') }],
 };
 
 export const footerData = {
@@ -122,7 +122,7 @@ export const footerData = {
       links: [
         { text: 'All News', href: getPermalink('/conc/news-events/all-news') },
         { text: 'Knowledge Articles', href: getPermalink('/conc/learning/knowledge-articles') },
-        { text: 'Contact Us', href: getPermalink('/#contact') },
+        { text: 'Contact Us', href: getPermalink('/contact#form') },
       ],
     },
   ],
@@ -130,13 +130,8 @@ export const footerData = {
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
-  socialLinks: [
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'YouTube', icon: 'tabler:brand-youtube', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-  ],
+  socialLinks: [],
   footNote: `
-    CONC Thammasat concept homepage built on Astro. Replace placeholder links and contact details with production data.
+    CONC Thammasat provides executive education, consulting, and lifelong learning programs.
   `,
 };

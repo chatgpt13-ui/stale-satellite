@@ -10,14 +10,16 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText
+    tagline="Contact"
+    title="Contact CONC"
+    subtitle="ส่งคำถามเกี่ยวกับหลักสูตร งานให้คำปรึกษา หรือความร่วมมือผ่านแบบฟอร์มด้านล่าง"
+  />
 
   <ContactUs
     id="form"
     title="Contact CONC"
-    subtitle="ส่งคำถามทั่วไป ข้อเสนอแนะ หรือความต้องการเบื้องต้นเกี่ยวกับหลักสูตรและบริการของศูนย์ได้จากฟอร์มนี้"
+    subtitle="สำหรับคำถามทั่วไป การสมัครหลักสูตร การขอ customized training หรือการขอให้ทีมงานติดต่อกลับ"
     inputs={[
       {
         type: 'text',
@@ -41,14 +43,14 @@ const metadata = {
     textarea={{
       label: 'Message',
       name: 'message',
-      placeholder: 'อธิบายคำถามหรือสิ่งที่ต้องการให้ทีมงานติดต่อกลับ',
+      placeholder: 'อธิบายความต้องการ โจทย์งาน หรือหลักสูตรที่สนใจ',
       rows: 6,
     }}
     disclaimer={{
       label: 'ยินยอมให้ทีมงานจัดเก็บข้อมูลที่จำเป็นเพื่อใช้ในการติดต่อกลับ',
     }}
     button="Send message"
-    description="ฟอร์มนี้ถูกตั้งค่าให้รองรับ Netlify Forms และ redirect ไปยังหน้าขอบคุณหลังส่งสำเร็จ"
+    description="ฟอร์มนี้รองรับ Netlify Forms และจะพาไปยังหน้าขอบคุณหลังส่งสำเร็จ"
     formOptions={{
       name: 'general-contact',
       method: 'post',
@@ -58,38 +60,37 @@ const metadata = {
     }}
   />
 
-  <!-- Features2 Widget ************** -->
-
   <Features2
-    title="We are here to help!"
+    title="ช่องทางการติดต่อ"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
+        title: 'General inquiries',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          'สอบถามข้อมูลหลักสูตร ปฏิทินอบรม ข่าวสาร และเอกสารประกอบการเรียนรู้ผ่านแบบฟอร์มติดต่อหรืออีเมลกลางของศูนย์',
       },
       {
-        title: 'Technical support',
+        title: 'Training and consulting requests',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          'สำหรับองค์กรที่ต้องการ customized training, workshop, executive development หรือโครงการให้คำปรึกษา สามารถส่ง brief เบื้องต้นมาให้ทีมงานประเมินได้',
       },
       {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
+        title: 'Follow-up and coordination',
+        description:
+          'เมื่อได้รับข้อมูลแล้ว ทีมงานจะติดต่อกลับตามรายละเอียดที่ให้ไว้เพื่อยืนยันความต้องการและขั้นตอนถัดไป',
       },
       {
         title: 'Email',
-        description: 'contact@support.com',
+        description: 'conc@tbs.tu.ac.th',
         icon: 'tabler:mail',
       },
       {
+        title: 'Contact form',
+        description: 'ใช้แบบฟอร์มบนหน้านี้เพื่อส่งคำถามหรือคำขอให้ทีมงานติดต่อกลับ',
+        icon: 'tabler:forms',
+      },
+      {
         title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        description: 'Thammasat Business School, Thammasat University',
         icon: 'tabler:map-pin',
       },
     ]}
