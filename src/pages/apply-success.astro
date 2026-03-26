@@ -1,0 +1,24 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+const metadata = {
+  title: 'Application Submitted',
+  description: 'ยืนยันการส่งใบสมัครหลักสูตรสำเร็จ',
+};
+---
+
+<Layout metadata={metadata}>
+  <section class="mx-auto max-w-4xl px-4 py-24 md:px-6">
+    <div class="rounded-[2rem] border border-stone-200 bg-white p-10 text-center">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Application received</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">ส่งใบสมัครเรียบร้อยแล้ว</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-stone-700">
+        ทีมงานได้รับข้อมูลการสมัครของคุณแล้ว และจะติดต่อกลับตามอีเมลหรือเบอร์โทรที่ระบุไว้เพื่อแจ้งขั้นตอนถัดไป
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a class="btn-primary !rounded-md !px-7 !py-3.5" href="/conc/training/open-enrollment">ดูหลักสูตรอื่น</a>
+        <a class="btn-secondary !rounded-md !px-7 !py-3.5" href="/contact#form">ติดต่อทีมงาน</a>
+      </div>
+    </div>
+  </section>
+</Layout>

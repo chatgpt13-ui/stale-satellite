@@ -1,0 +1,314 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import { getCollection } from 'astro:content';
+import { getPermalink } from '~/utils/permalinks';
+
+export const getStaticPaths = async () =>
+  (await getCollection('program')).map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }));
+
+const { item } = Astro.props;
+const metadata = {
+  title: `Apply | ${item.data.title}`,
+  description: `สมัครหลักสูตร ${item.data.title} ด้วย Google account`,
+};
+const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? '';
+---
+
+<Layout metadata={metadata}>
+  <script is:inline src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <section class="border-b border-stone-200 bg-white">
+    <div class="mx-auto max-w-5xl px-4 py-16 md:px-6 md:py-20">
+      <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Course Application</p>
+      <h1 class="mt-4 text-4xl font-semibold text-stone-900 md:text-5xl">สมัครหลักสูตร {item.data.title}</h1>
+      <p class="mt-6 max-w-3xl text-lg leading-8 text-stone-700">
+        เข้าสู่ระบบด้วย Google เพื่อยืนยันตัวตน จากนั้นกรอกข้อมูลเพิ่มเติมสำหรับการสมัครและการติดต่อกลับจากทีมงาน
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm text-stone-600">
+        <span class="rounded-full border border-stone-300 px-3 py-1">{item.data.category}</span>
+        <span class="rounded-full border border-stone-300 px-3 py-1">{item.data.format}</span>
+        <span class="rounded-full border border-stone-300 px-3 py-1">{item.data.date}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-5xl px-4 py-16 md:px-6">
+    <div class="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+      <aside class="rounded-[1.75rem] border border-stone-200 bg-white p-7">
+        <h2 class="text-2xl font-semibold text-stone-900">สิ่งที่ระบบจะเก็บจาก Google</h2>
+        <ul class="mt-6 space-y-3 text-sm leading-7 text-stone-700">
+          <li class="rounded-xl bg-neutral-100 px-4 py-3">ชื่อผู้สมัคร</li>
+          <li class="rounded-xl bg-neutral-100 px-4 py-3">อีเมล Google ที่ใช้สมัคร</li>
+          <li class="rounded-xl bg-neutral-100 px-4 py-3">รหัสผู้ใช้ Google เพื่ออ้างอิงใบสมัคร</li>
+        </ul>
+        <h3 class="mt-8 text-lg font-semibold text-stone-900">ข้อมูลที่ต้องกรอกเพิ่ม</h3>
+        <ul class="mt-4 space-y-3 text-sm leading-7 text-stone-700">
+          <li class="rounded-xl bg-neutral-100 px-4 py-3">เบอร์โทรศัพท์และตำแหน่งงาน</li>
+          <li class="rounded-xl bg-neutral-100 px-4 py-3">องค์กรหรือหน่วยงาน</li>
+          <li class="rounded-xl bg-neutral-100 px-4 py-3">วัตถุประสงค์หรือคำถามเพิ่มเติมเกี่ยวกับหลักสูตร</li>
+        </ul>
+      </aside>
+
+      <div
+        class="rounded-[1.75rem] border border-stone-200 bg-white p-7"
+        data-application-root
+        data-google-client-id={googleClientId}
+        data-program-slug={item.id}
+        data-program-title={item.data.title}
+      >
+        <div class="rounded-2xl border border-stone-200 bg-stone-50 p-5" data-auth-message>
+          <p class="text-sm font-semibold uppercase tracking-[0.14em] text-red-700">Step 1</p>
+          <h2 class="mt-2 text-2xl font-semibold text-stone-900">Sign in with Google</h2>
+          <p class="mt-3 text-sm leading-7 text-stone-600">
+            ล็อกอินด้วย Google ก่อนเพื่อปลดล็อกฟอร์มสมัคร ระบบจะ prefill ชื่อและอีเมลให้อัตโนมัติ
+          </p>
+          <p
+            class="mt-3 hidden rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+            data-auth-config-warning
+          >
+            ยังไม่ได้ตั้งค่า <code>PUBLIC_GOOGLE_CLIENT_ID</code> จึงไม่สามารถแสดง Google Sign-In ได้ใน environment นี้
+          </p>
+          <div class="mt-5" data-google-button></div>
+        </div>
+
+        <div class="mt-6 hidden rounded-2xl border border-emerald-300 bg-emerald-50 p-5" data-signed-in-panel>
+          <div class="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-700">Signed in</p>
+              <h3 class="mt-2 text-xl font-semibold text-stone-900" data-profile-name></h3>
+              <p class="mt-1 text-sm text-stone-600" data-profile-email></p>
+            </div>
+            <button
+              type="button"
+              class="rounded-xl border border-stone-300 px-4 py-2 text-sm font-medium text-stone-700 transition hover:border-red-700 hover:text-red-700"
+              data-signout-button
+            >
+              Use another Google account
+            </button>
+          </div>
+        </div>
+
+        <form
+          class="mt-6 hidden space-y-5"
+          method="post"
+          action="/apply-success"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          name="course-application"
+          data-application-form
+        >
+          <input type="hidden" name="form-name" value="course-application" />
+          <input type="hidden" name="bot-field" />
+          <input type="hidden" name="program_slug" value={item.id} />
+          <input type="hidden" name="program_title" value={item.data.title} />
+          <input type="hidden" name="program_category" value={item.data.category} />
+          <input type="hidden" name="google_sub" data-field-google-sub />
+          <input type="hidden" name="google_name" data-field-google-name />
+          <input type="hidden" name="google_email" data-field-google-email />
+          <input type="hidden" name="auth_provider" value="google" />
+
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.14em] text-red-700">Step 2</p>
+            <h2 class="mt-2 text-2xl font-semibold text-stone-900">Application details</h2>
+            <p class="mt-3 text-sm leading-7 text-stone-600">
+              ตรวจสอบข้อมูลจาก Google แล้วกรอกรายละเอียดเพิ่มเติมให้ครบก่อนส่งใบสมัคร
+            </p>
+          </div>
+
+          <div class="grid gap-5 md:grid-cols-2">
+            <div>
+              <label for="full_name" class="block text-sm font-medium text-stone-800">Full name</label>
+              <input
+                id="full_name"
+                name="full_name"
+                data-field-full-name
+                type="text"
+                required
+                class="mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-md"
+              />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-stone-800">Email</label>
+              <input
+                id="email"
+                name="email"
+                data-field-email
+                type="email"
+                required
+                class="mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-md"
+              />
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-stone-800">Phone</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                class="mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-md"
+              />
+            </div>
+            <div>
+              <label for="job_title" class="block text-sm font-medium text-stone-800">Job title</label>
+              <input
+                id="job_title"
+                name="job_title"
+                type="text"
+                required
+                class="mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-md"
+              />
+            </div>
+            <div class="md:col-span-2">
+              <label for="organization" class="block text-sm font-medium text-stone-800">Organization</label>
+              <input
+                id="organization"
+                name="organization"
+                type="text"
+                required
+                class="mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-md"
+              />
+            </div>
+            <div class="md:col-span-2">
+              <label for="note" class="block text-sm font-medium text-stone-800">Application note</label>
+              <textarea
+                id="note"
+                name="note"
+                rows="5"
+                placeholder="ระบุวัตถุประสงค์ในการสมัคร ข้อสงสัย หรือข้อมูลเพิ่มเติมที่ทีมงานควรทราบ"
+                class="mt-2 block w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-md"></textarea>
+            </div>
+          </div>
+
+          <label
+            class="flex items-start gap-3 rounded-xl border border-stone-200 bg-stone-50 px-4 py-4 text-sm text-stone-700"
+          >
+            <input id="consent" name="consent" type="checkbox" required class="mt-1 h-4 w-4 rounded border-stone-300" />
+            <span
+              >ยินยอมให้ทีมงานใช้ข้อมูลในใบสมัครนี้เพื่อการติดต่อกลับ การยืนยันสิทธิ์ และการประสานงานเกี่ยวกับหลักสูตร</span
+            >
+          </label>
+
+          <div class="flex flex-wrap gap-3">
+            <button type="submit" class="btn-primary !rounded-md !px-7 !py-3.5">ส่งใบสมัคร</button>
+            <a class="btn-secondary !rounded-md !px-7 !py-3.5" href={getPermalink(`/programs/${item.id}`)}
+              >กลับไปดูรายละเอียดหลักสูตร</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline define:vars={{ googleClientId }}>
+    const STORAGE_KEY = 'conc-google-profile';
+
+    const decodeJwt = (token) => {
+      const payload = token.split('.')[1];
+      const normalized = payload.replace(/-/g, '+').replace(/_/g, '/');
+      const decoded = decodeURIComponent(
+        atob(normalized)
+          .split('')
+          .map((char) => `%${`00${char.charCodeAt(0).toString(16)}`.slice(-2)}`)
+          .join('')
+      );
+      return JSON.parse(decoded);
+    };
+
+    const root = document.querySelector('[data-application-root]');
+
+    if (root) {
+      const googleButton = root.querySelector('[data-google-button]');
+      const configWarning = root.querySelector('[data-auth-config-warning]');
+      const signedInPanel = root.querySelector('[data-signed-in-panel]');
+      const profileName = root.querySelector('[data-profile-name]');
+      const profileEmail = root.querySelector('[data-profile-email]');
+      const applicationForm = root.querySelector('[data-application-form]');
+      const signoutButton = root.querySelector('[data-signout-button]');
+      const fullNameField = root.querySelector('[data-field-full-name]');
+      const emailField = root.querySelector('[data-field-email]');
+      const googleSubField = root.querySelector('[data-field-google-sub]');
+      const googleNameField = root.querySelector('[data-field-google-name]');
+      const googleEmailField = root.querySelector('[data-field-google-email]');
+
+      const applyProfile = (profile) => {
+        profileName.textContent = profile.name || '';
+        profileEmail.textContent = profile.email || '';
+        fullNameField.value = profile.name || '';
+        emailField.value = profile.email || '';
+        googleSubField.value = profile.sub || '';
+        googleNameField.value = profile.name || '';
+        googleEmailField.value = profile.email || '';
+        signedInPanel.classList.remove('hidden');
+        applicationForm.classList.remove('hidden');
+      };
+
+      const resetProfile = () => {
+        localStorage.removeItem(STORAGE_KEY);
+        signedInPanel.classList.add('hidden');
+        applicationForm.classList.add('hidden');
+        fullNameField.value = '';
+        emailField.value = '';
+        googleSubField.value = '';
+        googleNameField.value = '';
+        googleEmailField.value = '';
+        if (window.google?.accounts?.id) {
+          window.google.accounts.id.disableAutoSelect();
+        }
+      };
+
+      signoutButton?.addEventListener('click', resetProfile);
+
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        try {
+          applyProfile(JSON.parse(stored));
+        } catch {
+          localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+
+      if (!googleClientId) {
+        configWarning?.classList.remove('hidden');
+      } else {
+        const bootGoogle = () => {
+          if (!window.google?.accounts?.id) {
+            window.setTimeout(bootGoogle, 250);
+            return;
+          }
+
+          window.google.accounts.id.initialize({
+            client_id: googleClientId,
+            callback: (response) => {
+              const profile = decodeJwt(response.credential);
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(profile));
+              applyProfile(profile);
+            },
+          });
+
+          if (googleButton) {
+            googleButton.innerHTML = '';
+            window.google.accounts.id.renderButton(googleButton, {
+              theme: 'outline',
+              size: 'large',
+              shape: 'pill',
+              text: 'signin_with',
+              width: 260,
+            });
+          }
+        };
+
+        bootGoogle();
+      }
+
+      applicationForm?.addEventListener('submit', (event) => {
+        if (!googleSubField.value || !googleEmailField.value) {
+          event.preventDefault();
+          alert('กรุณาเข้าสู่ระบบด้วย Google ก่อนส่งใบสมัคร');
+        }
+      });
+    }
+  </script>
+</Layout>

@@ -35,3 +35,13 @@ npm run build
 - รักษา public routes ให้เหลือเฉพาะหน้าที่เกี่ยวข้องกับ CONC
 - เติมข้อมูลจริงสำหรับหลักสูตร ช่องทางติดต่อ และเอกสารนโยบาย
 - เชื่อม form submissions และ workflow หลังบ้านตามสภาพแวดล้อม deploy จริง
+
+## Google login for course applications
+
+ระบบสมัครหลักสูตรใช้ Google Sign-In ฝั่ง client และต้องตั้งค่า environment variable ต่อไปนี้ก่อนใช้งานจริง:
+
+```bash
+PUBLIC_GOOGLE_CLIENT_ID=your-google-oauth-client-id
+```
+
+ใน Google Cloud Console ให้เพิ่ม Authorized JavaScript origins ให้ตรงกับโดเมนที่ใช้รันเว็บ เช่น local dev และ production
