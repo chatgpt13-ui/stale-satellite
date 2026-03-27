@@ -227,6 +227,7 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? '';
       const profileEmail = root.querySelector('[data-profile-email]');
       const applicationForm = root.querySelector('[data-application-form]');
       const signoutButton = root.querySelector('[data-signout-button]');
+      const consentField = root.querySelector('#consent');
       const fullNameField = root.querySelector('[data-field-full-name]');
       const emailField = root.querySelector('[data-field-email]');
       const googleSubField = root.querySelector('[data-field-google-sub]');
@@ -249,11 +250,13 @@ const googleClientId = import.meta.env.PUBLIC_GOOGLE_CLIENT_ID ?? '';
         localStorage.removeItem(STORAGE_KEY);
         signedInPanel.classList.add('hidden');
         applicationForm.classList.add('hidden');
+        applicationForm.reset();
         fullNameField.value = '';
         emailField.value = '';
         googleSubField.value = '';
         googleNameField.value = '';
         googleEmailField.value = '';
+        consentField.checked = false;
         if (window.google?.accounts?.id) {
           window.google.accounts.id.disableAutoSelect();
         }

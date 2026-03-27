@@ -17,6 +17,7 @@ const serviceCards = [
     description:
       'รวมหลักสูตรระยะสั้น ระยะยาว และออนไลน์ สำหรับผู้บริหาร ผู้ประกอบการ และบุคลากรที่ต้องการอัปสกิลอย่างเป็นระบบ',
     icon: 'tabler:book-2',
+    href: getPermalink('/conc/training/open-enrollment'),
   },
   {
     title: 'Customized Training',
@@ -24,6 +25,7 @@ const serviceCards = [
     description:
       'ออกแบบเนื้อหาให้ตรงกับบริบทธุรกิจ เป้าหมาย และระดับของผู้เรียน พร้อม workshop ที่นำไปใช้ได้จริงในองค์กร',
     icon: 'tabler:building-bank',
+    href: getPermalink('/conc/training/customized-training'),
   },
   {
     title: 'Consulting Service',
@@ -31,12 +33,14 @@ const serviceCards = [
     description:
       'สนับสนุนการวางกลยุทธ์ การพัฒนาองค์กร และการขับเคลื่อนโครงการสำคัญผ่านผู้เชี่ยวชาญจากภาควิชาการและภาคธุรกิจ',
     icon: 'tabler:briefcase-2',
+    href: getPermalink('/conc/consulting/service-field'),
   },
   {
     title: 'Knowledge & Forum',
     subtitle: 'องค์ความรู้และกิจกรรมวิชาการ',
     description: 'เผยแพร่บทความ วิดีโอ และเวทีแลกเปลี่ยนความรู้ที่ช่วยต่อยอดการเรียนรู้ตลอดชีวิตสำหรับภาครัฐและเอกชน',
     icon: 'tabler:video',
+    href: getPermalink('/conc/learning/knowledge-articles'),
   },
 ];
 
@@ -214,7 +218,7 @@ const updates = [
             <p class="mt-4 text-sm leading-7 text-stone-600">{card.description}</p>
             <a
               class="mt-6 inline-flex items-center text-sm font-semibold text-neutral-900"
-              href={getPermalink('/conc/training/customized-training')}
+              href={card.href}
             >
               Read more
               <Icon name="tabler:arrow-right" class="ml-2 h-4 w-4" />
