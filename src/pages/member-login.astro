@@ -1,0 +1,93 @@
+---
+import { Icon } from 'astro-icon/components';
+import Layout from '~/layouts/PageLayout.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import Button from '~/components/ui/Button.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'Member Login',
+  description: 'Member portal access page for CONC participants and returning learners.',
+};
+---
+
+<Layout metadata={metadata}>
+  <HeroText
+    tagline="Member Access"
+    title="Member Login"
+    subtitle="พื้นที่สำหรับผู้เข้าอบรม ศิษย์เก่า และผู้ใช้งานที่ต้องการเข้าถึงข้อมูลการเรียน เอกสาร และสิทธิประโยชน์ของสมาชิก"
+    callToAction={{ text: 'Contact for access', href: getPermalink('/contact#form') }}
+    callToAction2={{ text: 'Browse programs', href: getPermalink('/conc/training/open-enrollment') }}
+  />
+
+  <section class="mx-auto max-w-7xl px-4 pb-16 md:px-6">
+    <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+      <article class="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+        <div class="flex items-center gap-3">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-red-700">
+            <Icon name="tabler:lock-access" class="h-6 w-6" />
+          </div>
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-700">Portal Access</p>
+            <h2 class="mt-1 text-2xl font-semibold text-stone-900">เข้าสู่ระบบสมาชิก</h2>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-5">
+          <label class="grid gap-2">
+            <span class="text-sm font-medium text-stone-700">Email</span>
+            <input
+              type="email"
+              placeholder="name@example.com"
+              class="rounded-2xl border border-stone-300 px-4 py-3 text-stone-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-100"
+            />
+          </label>
+          <label class="grid gap-2">
+            <span class="text-sm font-medium text-stone-700">Password</span>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              class="rounded-2xl border border-stone-300 px-4 py-3 text-stone-900 outline-none transition focus:border-red-600 focus:ring-2 focus:ring-red-100"
+            />
+          </label>
+        </div>
+
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <Button href={getPermalink('/contact#form')} variant="primary" text="Request login access" />
+          <a class="text-sm font-medium text-red-700 transition hover:text-red-800" href={getPermalink('/contact#form')}>
+            Forgot password or need help?
+          </a>
+        </div>
+
+        <p class="mt-6 text-sm leading-7 text-stone-600">
+          หน้านี้เตรียมไว้สำหรับเชื่อมต่อระบบสมาชิกของ CONC ในลำดับถัดไป หากต้องการเปิดสิทธิ์เข้าใช้งานหรือขอความช่วยเหลือ
+          กรุณาติดต่อทีมงานผ่านแบบฟอร์มติดต่อ
+        </p>
+      </article>
+
+      <aside class="rounded-[2rem] border border-neutral-800 bg-neutral-950 p-8 text-white">
+        <p class="text-sm font-semibold uppercase tracking-[0.18em] text-red-400">What members can access</p>
+        <div class="mt-6 grid gap-5">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">Learning materials</h3>
+            <p class="mt-2 text-sm leading-7 text-white/75">
+              เอกสารประกอบการเรียน ไฟล์สรุป และ resource ที่เกี่ยวข้องกับหลักสูตรที่ลงทะเบียนไว้
+            </p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">Program updates</h3>
+            <p class="mt-2 text-sm leading-7 text-white/75">
+              ข่าวสารกำหนดการเรียน กิจกรรมต่อเนื่อง และประกาศสำคัญสำหรับผู้เข้าอบรมและศิษย์เก่า
+            </p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+            <h3 class="text-lg font-semibold">Support and coordination</h3>
+            <p class="mt-2 text-sm leading-7 text-white/75">
+              ช่องทางติดต่อทีมงานเพื่อประสานเรื่องการเข้าเรียน เอกสารรับรอง และการเข้าถึงสิทธิ์ของสมาชิก
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
